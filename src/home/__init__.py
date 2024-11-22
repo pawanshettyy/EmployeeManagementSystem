@@ -1,5 +1,5 @@
-from flask import Blueprint  # Import Blueprint class from Flask
+from flask import Blueprint
 
-home = Blueprint('home', __name__)  # Create a blueprint named 'home', using the current module (__name__) as its context.
+home = Blueprint('home',__name__)
 
-from . import routes  # Import routes (or views) for the 'home' blueprint from the routes file in the same package
+from . import routes

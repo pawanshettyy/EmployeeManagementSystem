@@ -18,22 +18,18 @@
             </div>
             {% endfor %}
         </div>
-            <!-- Page Title -->
             <h1 class="mt-4">Request for a salary advance</h1><hr>
 
-            <!-- Form for salary advance request -->
             <div class="card pmd-card single-col-form">
                 <form id="apply-leave" method="post" action="">
                     <div class="card-body">
                         <div class="row">
-                            <!-- Input field for requested amount -->
                             <div class="col-md-6">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
                                     <label class="control-label" for="montant">Amount requested</label>
                                     <input type="number" class="form-control" id="requested_amount" name="requested_amount" required><span class="pmd-textfield-focused"></span>
                                 </div>
                             </div>
-                            <!-- Input field for reason -->
                             <div class="col-12">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
                                     <label>Reason</label>
@@ -42,7 +38,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Submit button -->
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary pmd-ripple-effect pmd-btn-raised" name="applyleave" value="Apply Leave">Apply</button>
                     </div>
@@ -54,3 +49,4 @@
     </div>
 
 {% endblock content %}
+

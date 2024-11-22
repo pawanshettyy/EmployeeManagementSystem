@@ -1,16 +1,21 @@
 {% extends "base.html" %}
-
+ 
   {% block title %}
-  Request leave
+  Request leave 
   {% endblock title %}
 
 {% block content %}
+
+    <!--
+    <h1>Apply Leave</h1>
+    -->
+    
 
     <div id="layoutSidenav_content">
 
         <div class="container">
         
-            <!-- Error message handling using Flask -->
+            <!-- error message used by flask -->
         <div class="container">
             {% for message in get_flashed_messages() %}
             <div class="alert alert-warning" role="alert">
@@ -27,9 +32,8 @@
                 <form id="apply-leave" method="post" action="">
                     <div class="card-body">
                         <div class="row">
-                            <!-- Leave Type Dropdown -->
                             <div class="col-12">
-                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label ">
                                     <label for="leave-type">Leave type</label>
                                     <select name="leave-type" id="leave-type" class="form-control" title="Please select a Leave Type" required>
                                         <option></option>
@@ -40,21 +44,18 @@
                                     </select><span class="pmd-textfield-focused"></span>
                                 </div>
                             </div>
-                            <!-- Start Date Input -->
                             <div class="col-md-6">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
                                     <label class="control-label" for="datepickerstart">Start Date</label>
                                     <input type="text" class="form-control" name="date_start" placeholder="dd/mm/yy" required><span class="pmd-textfield-focused"></span>
                                 </div>
                             </div>
-                            <!-- End Date Input -->
                             <div class="col-md-6">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
                                     <label class="control-label" for="datepickerend">End Date</label>
                                     <input type="text" class="form-control" name="date_end" placeholder="dd/mm/yy" required><span class="pmd-textfield-focused"></span>
                                 </div>
                             </div>
-                            <!-- Reason Textarea -->
                             <div class="col-12">
                                 <div class="form-group pmd-textfield pmd-textfield-floating-label">
                                     <label>Reason</label>
@@ -63,7 +64,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Submit Button -->
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary pmd-ripple-effect pmd-btn-raised" name="applyleave" value="Apply Leave">Apply Request</button>
                     </div>

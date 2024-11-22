@@ -1,38 +1,32 @@
-from flask import flash, request, render_template, url_for, redirect, send_from_directory, abort, after_this_request, session
-from flask_login import login_user, logout_user, login_required, current_user
+from flask import flash,request,render_template,url_for,redirect,send_from_directory,abort,after_this_request,session
+from flask_login import login_user,logout_user,login_required,current_user
 
-from .modules import *  # Import helper functions like LoginAccount and RegisterAccount
-from . import auth  # Import the blueprint for the auth routes
 
-# Route to handle user login
-@auth.route("/login", methods=['POST', 'GET'])
+from .modules import *
+from . import auth
+
+@auth.route("/login",methods=['POST','GET'])
 def login():
-    # If the request method is POST, handle the login logic
     if request.method == 'POST':
-        response = LoginAccount()  # Call the function to handle the login
-        return response  # Return the result from the login function
+        response = LoginAccount()
+        return response
     else:
-        # If the request method is GET, simply render the login page
         return render_template('auth/login.html')    
 
-# Route to handle user registration
-@auth.route("/register", methods=['POST', 'GET'])
+@auth.route("/register",methods=['POST','GET'])
 def register():
-    # TODO: Add form validation before processing
+    # TODO:FORM VALIDATION
     if request.method == 'POST':
-        response = RegisterAccount()  # Call the function to handle registration
-        return response  # Return the result from the registration function
+        response = RegisterAccount()
+        return response
     else:
-        # If the request method is GET, render the registration page
         return render_template('auth/register.html')     
 
-# Route to handle user logout
 @auth.route('/logout')
 def logout():
-    logout_user()  # Log out the current user
-    return redirect(url_for('auth.login'))  # Redirect to the login page
+    logout_user()
+    return redirect(url_for('auth.login'))
 
-# Route to handle password reset or password change page
-@auth.route("/motdepass", methods=['POST', 'GET'])
+@auth.route("/motdepass",methods=['POST','GET'])
 def motdepass():
-    return render_template('auth/password.html')  # Render the password change page
+    return render_template('auth/password.html')
