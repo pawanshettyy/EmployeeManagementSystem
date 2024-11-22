@@ -1,55 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Character encoding set to UTF-8 for universal compatibility -->
         <meta charset="utf-8" />
+        <!-- Ensures proper rendering and touch zooming on IE -->
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <!-- Makes the page responsive to different screen sizes -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <!-- Placeholder for page description -->
         <meta name="description" content="" />
+        <!-- Placeholder for author information -->
         <meta name="author" content="" />
+        <!-- Title of the login page -->
         <title>Login</title>
+        <!-- Link to the custom stylesheet -->
         <link href="/static/css/styles.css" rel="stylesheet" />
+        <!-- Importing FontAwesome for icons -->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-primary">
+    <body class="bg-primary"> <!-- Sets the background color to primary -->
+        <!-- Main authentication layout container -->
         <div id="layoutAuthentication">
+            <!-- Content section within the authentication layout -->
             <div id="layoutAuthentication_content">
                 <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
+                    <div class="container"> <!-- Bootstrap container for responsiveness -->
+                        <div class="row justify-content-center"> <!-- Centers the content horizontally -->
+                            <div class="col-lg-5"> <!-- Restricts the width to a manageable size -->
+                                <!-- Card container for login form -->
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                    <!-- Header of the card with title -->
+                                    <div class="card-header">
+                                        <h3 class="text-center font-weight-light my-4">Login</h3>
+                                    </div>
                                     
-                                    <!-- error message used by flask -->
+                                    <!-- Section to display error messages flashed by Flask -->
                                     <div class="container">
                                         {% for message in get_flashed_messages() %}
+                                        <!-- Alert box for displaying messages -->
                                         <div class="alert alert-warning" role="alert">
-                                           <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+                                           <!-- Message text centered -->
                                            <div style="text-align:center">{{ message }}</div>
                                         </div>
                                         {% endfor %}
-                                       </div>
+                                    </div>
                                    
-                                       <div class="card-body">
-                                        
+                                    <!-- Card body containing the login form -->
+                                    <div class="card-body">
+                                        <!-- Login form -->
                                         <form id="form" action="#" method="POST">
-
+                                            <!-- Employee ID input field -->
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="employee_id" id="employee_id" type="number" placeholder="Employee Id" required/>
+                                                <input 
+                                                    class="form-control" 
+                                                    name="employee_id" 
+                                                    id="employee_id" 
+                                                    type="number" 
+                                                    placeholder="Employee Id" 
+                                                    required
+                                                />
+                                                <!-- Floating label for Employee ID -->
                                                 <label for="matricule">Employee Id</label>
                                             </div>
+                                            <!-- Password input field -->
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="password" id="inputPassword" type="password" placeholder="Password" required/>
+                                                <input 
+                                                    class="form-control" 
+                                                    name="password" 
+                                                    id="inputPassword" 
+                                                    type="password" 
+                                                    placeholder="Password" 
+                                                    required
+                                                />
+                                                <!-- Floating label for Password -->
                                                 <label for="inputPassword">Password</label>
                                             </div>
+                                            <!-- Forgot password link and login button -->
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                <!-- Link to the forgot password page -->
                                                 <a class="small" href="{{url_for('auth.motdepass')}}">Forgot Password?</a>
+                                                <!-- Submit button for login -->
                                                 <input type="submit" class="btn btn-primary" value="Login">
                                             </div>
                                         </form>
                                     </div>
+                                    <!-- Footer section with signup link -->
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="{{url_for('auth.register')}}">Need an account? Sign up!</a></div>
+                                        <div class="small">
+                                            <!-- Link to the registration page -->
+                                            <a href="{{url_for('auth.register')}}">Need an account? Sign up!</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +98,9 @@
                 </main>
             </div>
         </div>
+        <!-- Bootstrap JS bundle for interactivity -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <!-- Link to custom JavaScript file -->
         <script src="/static/js/scripts.js"></script>
     </body>
 </html>

@@ -1,68 +1,73 @@
-{% extends "base.html" %}
- 
-  {% block title %}
-   Salary advance requests
-  {% endblock title %}
+{% extends "base.html" %} <!-- Inherit from the base HTML template to maintain consistent layout -->
+
+{% block title %}
+  List of employees <!-- Define the page title -->
+{% endblock title %}
 
 {% block content %}
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-<!-- error message used by flask -->
-<div class="container">
-  {% for message in get_flashed_messages() %}
-  <div class="alert alert-warning" role="alert">
-     <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
-     <div style="text-align:center">{{ message }}</div>
-  </div>
-  {% endfor %}
- </div>
-<h1 class="mt-4">Salary advance requests</h1><hr>
+            <!-- Page heading -->
+            <h1 class="mt-4">List of employees</h1>
+            <hr>
+            
+            <!-- Displaying flashed messages for errors or notifications using Flask -->
+            <div class="container">
+                {% for message in get_flashed_messages() %} <!-- Loop through flashed messages -->
+                <div class="alert alert-warning" role="alert">
+                    <!--<button type="button" class="close" data-dismiss="alert">&times;</button>--> <!-- Optional close button -->
+                    <div style="text-align:center">{{ message }}</div> <!-- Display the message -->
+                </div>
+                {% endfor %}
+            </div>
 
-<div class="card mb-4">
-    <div class="card-header">
-        <i class="fas fa-table me-1"></i>
-        Salary Advance requests list
-      </div>
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Employee Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Requested amount</th>
-                <th scope="col">Reason</th>
-                <th scope="col"></th>
-
-              </tr>
-            </thead>
-            <tbody>
-                {% for advance in advances_list %}
-                <form action="#" method="POST">
-                 <tr>
-                   <th scope="row"><input type="hidden" name="employee_id" value="{{ advance['employee_id'] }}"/>{{ advance['employee_id'] }}</th>
-                   <td>{{ advance['firstname'] }}</td>
-                   <td>{{ advance['requested_amount'] }}</td>
-                   <td>{{ advance['reason'] }}</td>
-                   <td><input type="submit" name="submit_b" value="Accept" class="btn btn-success" style="width:100%"/></td>
-                   <td><input type="submit" name="submit_b" value="Decline"  class="btn btn-danger" style="width:100%"/></td>
-                 </tr>
-                </form>
-              {% endfor %}
-            </tbody>
-          </table>
-    </div>
+            <!-- Card container for listing employees -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    List of employees <!-- Header title -->
+                </div>
+                <div class="card-body">
+                    <!-- Table to display employee details -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Employee ID</th> <!-- Employee ID column -->
+                                <th scope="col">First Name</th> <!-- First name column -->
+                                <th scope="col">Last Name</th> <!-- Last name column -->
+                                <th scope="col">Department</th> <!-- Department column -->
+                                <th scope="col">Salary</th> <!-- Salary column -->
+                                <th scope="col">Action</th> <!-- Action column -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Dynamically populate the table rows with employee data -->
+                            {% for user in list_users %}
+                            <form action="#" method="POST"> <!-- Form to handle edit actions -->
+                                <tr>
+                                    <td>
+                                        <!-- Hidden input to pass the employee ID to the backend -->
+                                        <input type="hidden" name="employee_id" value="{{ user['employee_id'] }}"/>
+                                        {{ user['employee_id'] }} <!-- Display Employee ID -->
+                                    </td>
+                                    <td>{{ user['firstname'] }}</td> <!-- Display First Name -->
+                                    <td>{{ user['lastname'] }}</td> <!-- Display Last Name -->
+                                    <td>{{ user['dep'] }}</td> <!-- Display Department -->
+                                    <td>{{ user['salary'] }}</td> <!-- Display Salary -->
+                                    <td>
+                                        <!-- Submit button to trigger editing for the specific employee -->
+                                        <input name="Edit" type="submit" value="Edit" class="btn btn-primary" style="width:100%"/>
+                                    </td>
+                                </tr>
+                            </form>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
 </div>
-</div>
-</main>
-
 {% endblock content %}
-
-
-
-
-
-
-
-
-
+S

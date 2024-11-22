@@ -1,73 +1,84 @@
-{% extends "base.html" %}
- 
-  {% block title %}
-   Leave requests
-  {% endblock title %}
+{% extends "base.html" %} <!-- Inherit layout and styling from the base template -->
+
+{% block title %}
+   Leave requests <!-- Set the page title -->
+{% endblock title %}
 
 {% block content %}
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-<!-- error message used by flask -->
-<div class="container">
-  {% for message in get_flashed_messages() %}
-  <div class="alert alert-warning" role="alert">
-     <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
-     <div style="text-align:center">{{ message }}</div>
-  </div>
-  {% endfor %}
- </div>
-<h1 class="mt-4">leave requests</h1><hr>
 
-<div class="card mb-4">
-    <div class="card-header">
-        <i class="fas fa-table me-1"></i>
-        Leave requests list
-    </div>
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Employee Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Start date</th>
-                <th scope="col">End date</th>
-                <th scope="col">Leave type</th>
-                <th scope="col">Reason</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for leave in leave_list %}
-              <form action="#" method="POST">
-                <tr>
-                  <th scope="row"><input type="hidden" name="employee_id" value="{{ leave['employee_id'] }}"/>{{ leave['employee_id'] }}</th>
-                  <td>{{ leave['firstname'] }}</td>
-                  <td>{{ leave['start_date'] }}</td>
-                  <td>{{ leave['end_date'] }}</td>
-                  <td>{{ leave['type'] }}</td>
-                  <td>{{ leave['reason'] }}</td>
-                  <td><input type="submit" name="submit_b" value="Accept" class="btn btn-success" style="width:100%"/></td>
-                  <td><input type="submit" name="submit_b" value="Decline"  class="btn btn-danger" style="width:100%"/></td>
-
-                </tr>
-              </form>
+            <!-- Display any flashed error or success messages -->
+            <div class="container">
+              {% for message in get_flashed_messages() %}
+              <div class="alert alert-warning" role="alert">
+                 <!--<button type="button" class="close" data-dismiss="alert">&times;</button>--> <!-- Optional close button -->
+                 <div style="text-align:center">{{ message }}</div> <!-- Centered message -->
+              </div>
               {% endfor %}
-            
-            </tbody>
-          </table>
-    </div>
-</div>
-</div>
-</main>
+            </div>
 
+            <!-- Page heading -->
+            <h1 class="mt-4">Leave requests</h1>
+            <hr>
+
+            <!-- Card to contain leave requests table -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Leave requests list <!-- Card title -->
+                </div>
+                <div class="card-body">
+                    <!-- Table for displaying leave requests -->
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Employee ID</th> <!-- Employee ID -->
+                            <th scope="col">Name</th> <!-- Employee Name -->
+                            <th scope="col">Start Date</th> <!-- Leave start date -->
+                            <th scope="col">End Date</th> <!-- Leave end date -->
+                            <th scope="col">Leave Type</th> <!-- Type of leave -->
+                            <th scope="col">Reason</th> <!-- Reason for leave -->
+                            <th scope="col"></th> <!-- Action buttons column -->
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Loop through leave requests -->
+                          {% for leave in leave_list %}
+                          <form action="#" method="POST"> <!-- Form to handle leave actions -->
+                            <tr>
+                              <!-- Hidden input for employee ID (used in backend processing) -->
+                              <th scope="row">
+                                <input type="hidden" name="employee_id" value="{{ leave['employee_id'] }}"/>
+                                {{ leave['employee_id'] }} <!-- Display Employee ID -->
+                              </th>
+                              <!-- Display Employee's first name -->
+                              <td>{{ leave['firstname'] }}</td>
+                              <!-- Display leave start date -->
+                              <td>{{ leave['start_date'] }}</td>
+                              <!-- Display leave end date -->
+                              <td>{{ leave['end_date'] }}</td>
+                              <!-- Display leave type -->
+                              <td>{{ leave['type'] }}</td>
+                              <!-- Display leave reason -->
+                              <td>{{ leave['reason'] }}</td>
+                              <!-- Accept leave request button -->
+                              <td>
+                                <input type="submit" name="submit_b" value="Accept" class="btn btn-success" style="width:100%"/>
+                              </td>
+                              <!-- Decline leave request button -->
+                              <td>
+                                <input type="submit" name="submit_b" value="Decline" class="btn btn-danger" style="width:100%"/>
+                              </td>
+                            </tr>
+                          </form>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
 {% endblock content %}
-
-
-
-
-
-
-
-
-

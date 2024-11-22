@@ -1,0 +1,6 @@
+To get started with HRMS on your local machine, follow these steps:
+
+Navigate to the project directory: cd hrms
+Install the project dependencies: pip install -r requirements.txt
+Run the application: python main.py
+Access HRMS in your browser at ttp://127.0.0.1:5000/

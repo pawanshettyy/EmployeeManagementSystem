@@ -1,97 +1,108 @@
 {% extends "base.html" %}
  
   {% block title %}
-  Request follow-up 
+  Request follow-up
   {% endblock title %}
 
 {% block content %}
+<!-- Main content for leave requests and salary advance follow-up page starts here -->
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid px-4">
-<h1 class="mt-4">Your leave requests</h1><hr>
-<div class="card mb-4">
-    <div class="card-header">
-        <i class="fas fa-table me-1"></i>
-        leave requests list
-    </div>
-    <div class="card-body">
-        <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Employee Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Start date</th>
-                <th scope="col">End date</th>
-                <th scope="col">Leave type</th>
-                <th scope="col">Reason</th>
-                <th scope="col">Status</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-                <tr>
-                  <th scope="row">{{ leave['employee_id'] }}</th>
-                  <td>{{ leave['nom'] }}</td>
-                  <td>{{ leave['date_deb'] }}</td>
-                  <td>{{ leave['date_fin'] }}</td>
-                  <td>{{ leave['type'] }}</td>
-                  <td>{{ leave['motif'] }}</td>
-                  
-                  {% if leave['status'] == 'Accepted': %}
-                     <td class="text-success">{{ leave['status'] }}</td>
-                  {% elif leave['status'] == 'Declined': %}
-                     <td class="text-danger">{{ leave['status'] }}</td>
-                  {% else :%}
-                    <td class=".text-primary">{{ leave['status'] }}</td>
-                  {% endif %}  
+            <!-- Title for Leave Requests -->
+            <h1 class="mt-4">Your leave requests</h1><hr>
 
-                </tr>
-            
-            </tbody>
-          </table>
-    </div>
-</div>  
-    <h1 class="mt-4">Your salary advance requests</h1><hr>
+            <!-- Leave Requests List -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Leave requests list
+                </div>
+                <div class="card-body">
+                    <!-- Table to display leave requests -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Employee Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Start date</th>
+                                <th scope="col">End date</th>
+                                <th scope="col">Leave type</th>
+                                <th scope="col">Reason</th>
+                                <th scope="col">Status</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Displaying leave request details -->
+                            <tr>
+                                <th scope="row">{{ leave['employee_id'] }}</th>
+                                <td>{{ leave['nom'] }}</td>
+                                <td>{{ leave['date_deb'] }}</td>
+                                <td>{{ leave['date_fin'] }}</td>
+                                <td>{{ leave['type'] }}</td>
+                                <td>{{ leave['motif'] }}</td>
 
-    <div class="card mb-4">
-        <div class="card-header">
-            <i class="fas fa-table me-1"></i>
-            Salary Advance requests list
+                                <!-- Conditional status display with color coding -->
+                                {% if leave['status'] == 'Accepted': %}
+                                    <td class="text-success">{{ leave['status'] }}</td>
+                                {% elif leave['status'] == 'Declined': %}
+                                    <td class="text-danger">{{ leave['status'] }}</td>
+                                {% else %}
+                                    <td class="text-primary">{{ leave['status'] }}</td>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>  
+
+            <!-- Title for Salary Advance Requests -->
+            <h1 class="mt-4">Your salary advance requests</h1><hr>
+
+            <!-- Salary Advance Requests List -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Salary advance requests list
+                </div>
+                <div class="card-body">
+                    <!-- Table to display salary advance requests -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Employee Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Requested amount</th>
+                                <th scope="col">Reason</th>
+                                <th scope="col">Status</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Displaying salary advance request details -->
+                            <tr>
+                                <th scope="row">{{ advance['employee_id'] }}</th>
+                                <td>{{ advance['nom'] }}</td>
+                                <td>{{ advance['montant'] }}</td>
+                                <td>{{ advance['motif'] }}</td>
+
+                                <!-- Conditional status display with color coding for salary advance -->
+                                {% if advance['status'] == 'Accepted': %}
+                                    <td class="text-success">{{ advance['status'] }}</td>
+                                {% elif advance['status'] == 'Declined': %}
+                                    <td class="text-danger">{{ advance['status'] }}</td>
+                                {% else %}
+                                    <td class="text-primary">{{ advance['status'] }}</td>
+                                {% endif %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>  
+            </div>
         </div>
-        <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">Employee Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Requested amount</th>
-                    <th scope="col">Reason</th>
-                    <th scope="col">Status</th>
-                    <th scope="col"></th>
-    
-                  </tr>
-                </thead>
-                <tbody>
-                     <tr>
-                       <th scope="row">{{ advance['employee_id'] }}</th>
-                       <td>{{ advance['nom'] }}</td>
-                       <td>{{ advance['montant'] }}</td>
-                       <td>{{ advance['motif'] }}</td>
-                       
-                       {% if advance['status'] == 'Accepted': %}
-                          <td class="text-success">{{ advance['status'] }}</td>
-                       {% elif advance['status'] == 'Declined': %}
-                          <td class="text-danger">{{ advance['status'] }}</td>
-                       {% else :%}
-                          <td class=".text-primary">{{ advance['status'] }}</td>
-                       {% endif %}  
-                    
-                     </tr>
-                </tbody>
-              </table>
-        </div>  
+    </main>
 </div>
-</div>
-</main>
+<!-- End of content for leave and salary advance requests follow-up -->
 
 {% endblock content %}

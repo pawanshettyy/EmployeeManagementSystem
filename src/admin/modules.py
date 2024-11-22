@@ -1,14 +1,9 @@
 from flask import flash
 from flask_login import current_user
-from src.models import *
+from src.models import *  # Assuming necessary models are imported
 
 def AdminOnly():
-    employee_id = current_user.employee_id
-    if current_user.is_admin == 0:
-        flash("Administrative access only")
-    return True if current_user.is_admin == 1 else False
-
-def fullname_role():
-    fullname = current_user.first_name + " " + current_user.last_name
-    is_admin = 'Administrator' if current_user.is_admin == 1 else 'Employee'
-    return (fullname,is_admin)
+    employee_id = current_user.employee_id  # Retrieve the current user's employee ID
+    if current_user.is_admin == 0:  # If the current user is not an admin
+        flash("Administrative access only")  # Flash an error message
+    return True if current_user.is_admin == 1 else False  # Return True if the user is an admin, otherwise False
