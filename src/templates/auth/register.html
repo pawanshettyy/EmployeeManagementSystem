@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Register</title>
+        <link href="static/css/styles.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>  
+    </head>
+    <body class="bg-primary">
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
+                                    
+                                    <!-- error message used by flask -->
+                                    <div class="container">
+                                        {% for message in get_flashed_messages() %}
+                                        <div class="alert alert-warning" role="alert">
+                                            <div style="text-align:center">{{ message }}</div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    
+                                    <div class="card-body">
+                                        <form id="form" action="#" method="POST">
+                                            <div class="row mb-3">
+                                                <div class="form-floating mb-3">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" name="employee_id" type="number" placeholder="Employee Id" required/>
+                                                        <label for="employee_id">Employee Id</label>
+                                                    </div>
+                                                </div>
+                                            </div>   
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" name="inputFirstName" type="text" placeholder="Enter your first name" required/>
+                                                        <label for="inputFirstName">First name</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input class="form-control" name="inputLastName" type="text" placeholder="Enter your last name" required/>
+                                                        <label for="inputLastName">Last name</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3">
+                                                        <input class="form-control" name="inputDOB" type="date" placeholder="Date of Birth" required/>
+                                                        <label for="inputDOB">Date of Birth</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3">
+                                                        <select name="inputGender" id="inputGender" class="form-control form-select" title="Gender" required>
+                                                            <option selected>Select Gender</option>
+                                                            <option>Male</option>
+                                                            <option>Female</option>
+                                                        </select>
+                                                        <label for="inputGender">Gender</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" name="inputEmail" type="email" placeholder="name@example.com" required/>
+                                                <label for="inputEmail">Email address</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" name="phone" type="phone" placeholder="Phone Number" required/>
+                                                <label for="phone">Phone Number</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" name="inputPassword" type="password" placeholder="Create a password" required/>
+                                                <label for="inputPassword">Password</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" name="address" type="text" placeholder="Address" required/>
+                                                <label for="address">Address</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3">
+                                                    <select name="is_admin" id="is_admin" class="form-control form-select" title="Admin" required>
+                                                        <option>Yes</option>
+                                                        <option>No</option>
+                                                    </select>
+                                                    <label for="is_admin">Admin</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3">
+                                                    <select name="dep" id="dep" class="form-control form-select" title="Department" required>
+                                                        <option>Production</option>
+                                                        <option>IT</option>
+                                                        <option>Management</option>
+                                                        <option>Marketing</option>
+                                                        <option>Sales</option>
+                                                        <option>Intern Software Developer</option>
+                                                        <option>DevOps</option>
+                                                        <option>Technical Lead</option>
+                                                        <option>Research and development</option>
+                                                        <option>Quality Assurance Engineer</option>
+                                                        <option>Production</option>
+                                                        <option>Front-end Developer</option>
+                                                        <option>Project Manager</option>
+                                                        <option>Software Architect</option>
+                                                        <option>Accounts and finance</option>
+                                                        <option>Ux/ui Designer</option>
+                                                        <option>Product Manager</option>
+                                                    </select>
+                                                    <label for="dep">Choose your department</label>     
+                                                </div>
+                                            </div>
+                                            <div class="mt-4 mb-0">
+                                                <div class="d-grid"><input name="create_account" type="submit" value="Create Account" class="btn btn-primary btn-block" ></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="card-footer text-center py-3">
+                                        <div class="small"><a href="{{url_for('auth.login')}}">Have an account? Go to login</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <script src="/static/js/scripts.js"></script>
+    </body>
+</html>

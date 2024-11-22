@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+ 
+  {% block title %}
+  List of employees
+  {% endblock title %}
+
+{% block content %}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+<h1 class="mt-4">List of employees</h1><hr>
+                <!-- error message used by flask -->
+                <div class="container">
+                  {% for message in get_flashed_messages() %}
+                  <div class="alert alert-warning" role="alert">
+                     <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+                     <div style="text-align:center">{{ message }}</div>
+                  </div>
+                  {% endfor %}
+                 </div>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        List of employees
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Employee Id</th>
+                <th scope="col">First name</th>
+                <th scope="col">Name</th>
+                <th scope="col">Department</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in list_users %}
+              <form action="#" method="POST">
+                  <tr>
+                      <td><input type="hidden" name="employee_id" value="{{ user['employee_id'] }}"/>{{ user['employee_id'] }}</td>
+                      <td>{{ user['firstname'] }}</td>
+                      <td>{{ user['lastname'] }}</td>
+                      <td>{{ user['dep'] }}</td>
+                      <td>{{ user['salary'] }}</td>
+                      <td><input name="Edit" type="submit" value="Edit" class="btn btn-primary" style="width:100%"/></td>
+                  </tr>
+              </form>
+              {% endfor %}
+          </tbody>
+          </table>
+    </div>
+</div>
+</div>
+</main>
+
+{% endblock content %}

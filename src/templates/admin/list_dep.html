@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+ 
+  {% block title %}
+  Department list
+  {% endblock title %}
+
+{% block content %}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+<h1 class="mt-4">Department list</h1><hr>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Department list
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Department Name</th>
+                <th scope="col">number of employees</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {% for dep in list_dep %}
+                  <tr>
+                      <td>{{ dep['name'] }}</td>
+                      <td>{{ dep['count'] }}</td>
+                  </tr>
+              {% endfor %}
+          </tbody>
+          </table>
+    </div>
+</div>
+</div>
+</main>
+
+{% endblock content %}
+
+
+
+
+
+
+
+

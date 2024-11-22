@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+ 
+  {% block title %}
+   Dashboard
+  {% endblock title %}
+
+{% block content %}
+
+            <div id="layoutSidenav_content">
+
+                <div class="container-fluid px-4">
+                   <!-- error message used by flask -->
+                <div class="container">
+                  {% for message in get_flashed_messages() %}
+                  <div class="alert alert-warning" role="alert">
+                     <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+                     <div style="text-align:center">{{ message }}</div>
+                  </div>
+                  {% endfor %}
+                 </div>
+                 
+                    <h1 class="mt-4">Profile</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active bg-secondary text-white"><b>Fullname :</b> {{ fullname }} <br> <b> Matricule : </b>{{ matricule }}</li>
+                    </ol>
+                </div>    
+                    
+                <section style="background-color: #eee;">
+                    <div class="container py-5">
+                      <div class="row">
+                        <div class="col-lg">
+                          <div class="card mb-4">
+                            <div class="card-body text-center">
+                              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                                class="rounded-circle img-fluid" style="width: 150px;">
+                              <h5 class="my-3">{{ fullname }}</h5>
+                              <p class="font-weight-bold mb-1">{{ dep }}</p>
+                              <p class="font-weight-bold mb-4">{{ address }}</p>
+                            </div>
+                          </div>
+                        <div class="col-lg">
+                          <div class="card mb-4">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Fullname</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <p class="text-muted mb-0">{{ fullname }}</p>
+                                </div>
+                              </div>
+                              <hr>                            
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Email</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <p class="text-muted mb-0">{{ email }}</p>
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Date of Birth</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <p class="text-muted mb-0">{{ date_of_birth }}</p>
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Gender</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <p class="text-muted mb-0">{{ gender }}</p>
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Phone number</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <p class="text-muted mb-0">{{ phone }}</p>
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Department</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <p class="text-muted mb-0">{{ dep }}</p>
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Address</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <p class="text-muted mb-0">{{ address }}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+            </div>
+        </div>
+
+{% endblock content %}
+
+

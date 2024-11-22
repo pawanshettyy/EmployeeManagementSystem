@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+ 
+  {% block title %}
+   Leave requests
+  {% endblock title %}
+
+{% block content %}
+<div id="layoutSidenav_content">
+    <main>
+        <div class="container-fluid px-4">
+<!-- error message used by flask -->
+<div class="container">
+  {% for message in get_flashed_messages() %}
+  <div class="alert alert-warning" role="alert">
+     <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+     <div style="text-align:center">{{ message }}</div>
+  </div>
+  {% endfor %}
+ </div>
+<h1 class="mt-4">leave requests</h1><hr>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Leave requests list
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Employee Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Start date</th>
+                <th scope="col">End date</th>
+                <th scope="col">Leave type</th>
+                <th scope="col">Reason</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for leave in leave_list %}
+              <form action="#" method="POST">
+                <tr>
+                  <th scope="row"><input type="hidden" name="employee_id" value="{{ leave['employee_id'] }}"/>{{ leave['employee_id'] }}</th>
+                  <td>{{ leave['firstname'] }}</td>
+                  <td>{{ leave['start_date'] }}</td>
+                  <td>{{ leave['end_date'] }}</td>
+                  <td>{{ leave['type'] }}</td>
+                  <td>{{ leave['reason'] }}</td>
+                  <td><input type="submit" name="submit_b" value="Accept" class="btn btn-success" style="width:100%"/></td>
+                  <td><input type="submit" name="submit_b" value="Decline"  class="btn btn-danger" style="width:100%"/></td>
+
+                </tr>
+              </form>
+              {% endfor %}
+            
+            </tbody>
+          </table>
+    </div>
+</div>
+</div>
+</main>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+

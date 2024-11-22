@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+ 
+  {% block title %}
+  Request leave 
+  {% endblock title %}
+
+{% block content %}
+
+    <!--
+    <h1>Apply Leave</h1>
+    -->
+    
+
+    <div id="layoutSidenav_content">
+
+        <div class="container">
+        
+            <!-- error message used by flask -->
+        <div class="container">
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning" role="alert">
+               <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+               <div style="text-align:center">{{ message }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <h1 class="mt-4">Request leave</h1><hr>
+
+            <!-- Apply Leave Form -->
+            <div class="card pmd-card single-col-form">
+                <form id="apply-leave" method="post" action="">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label ">
+                                    <label for="leave-type">Leave type</label>
+                                    <select name="leave-type" id="leave-type" class="form-control" title="Please select a Leave Type" required>
+                                        <option></option>
+                                        <option>Sick leave</option>
+                                        <option>Casual leave</option>
+                                        <option>Unpaid leave</option>
+                                        <option>Hourly leave</option>
+                                    </select><span class="pmd-textfield-focused"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                    <label class="control-label" for="datepickerstart">Start Date</label>
+                                    <input type="text" class="form-control" name="date_start" placeholder="dd/mm/yy" required><span class="pmd-textfield-focused"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                    <label class="control-label" for="datepickerend">End Date</label>
+                                    <input type="text" class="form-control" name="date_end" placeholder="dd/mm/yy" required><span class="pmd-textfield-focused"></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                    <label>Reason</label>
+                                    <textarea class="form-control" id="reason" name="reason" required></textarea><span class="pmd-textfield-focused"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary pmd-ripple-effect pmd-btn-raised" name="applyleave" value="Apply Leave">Apply Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+       </div>
+    </div>
+    </div>
+
+{% endblock content %}

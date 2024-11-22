@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+ 
+  {% block title %}
+   Dashboard
+  {% endblock title %}
+
+{% block content %}
+<style>
+  .d-flex {
+    gap:20px;
+  }
+</style>
+            <div id="layoutSidenav_content">
+
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Edit employee's information</h1>
+                </div>
+                <hr>
+                <!-- error message used by flask -->
+                <div class="container">
+                  {% for message in get_flashed_messages() %}
+                  <div class="alert alert-warning" role="alert">
+                     <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+                     <div style="text-align:center">{{ message }}</div>
+                  </div>
+                  {% endfor %}
+                 </div>
+                <section style="background-color: #eee;">
+                    <div class="container py-5">
+                      <div class="row">
+                        <div class="col-lg">
+                          <div class="card mb-4">
+                            <div class="card-body text-center">
+                              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                                class="rounded-circle img-fluid" style="width: 150px;">
+                              <h5 class="my-3">{{ fullname }}</h5>
+                              <p class="text-muted mb-1">{{ dep }}</p>
+                              <p class="text-muted mb-4">{{ address }}</p>
+                              <div class="d-flex justify-content-center mb-2">
+                                <a href="mailto: {{ email }}" target="_blank" class="btn btn-primary">Contact</a>
+                              </div>
+                            </div>
+                          </div>
+                      <form action="#" method="POST"> 
+                        <div class="col-lg">
+                          <div class="card mb-4">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">First Name</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <input type="text" value="{{ firstname }}" name="firstname">
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Last Name</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <input type="text" value="{{ lastname }}" name="lastname">
+                                </div>
+                              </div>
+                              <hr>   
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Gender</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <input type="text" value="{{ gender }}" name="gender"/>
+                                </div>
+                              </div>
+                              <hr>  
+                              <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Date of Birth</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <input type="date" value="{{ date_of_birth }}" name="date_of_birth"/>
+                                </div>
+                             </div>
+                              <hr>         
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Email</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <input type="text" value="{{ email }}" name="email"/>
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Phone Number</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <input type="text" value="{{ phone }}" name="phone"/>
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Department</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <input type="text" value="{{ dep }}" name="dep"/>                               </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Address</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <input type="text" value="{{ address }}" name="address"/>
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <p class="mb-0">Salary</p>
+                                </div>
+                                <div class="col-sm-9">
+                                  <input type="text" value="{{ salary }}" name="salary"/>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                          <input type="submit" name="submit_b" value="Apply" class="btn btn-primary" />
+                          <input type="submit" name="submit_b" value="Delete" class="btn btn-danger" />
+                        </div>                      
+                      </form>  
+                      </div>
+                    </div>
+                  </section>
+            </div>
+        </div>
+
+{% endblock content %}
+
+
